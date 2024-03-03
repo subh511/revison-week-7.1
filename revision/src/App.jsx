@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-const LandingPages  = lazy(()=> "./components/LandingPages");
-const Description = lazy(()=>  "./components/Description");
-import { lazy,Suspense } from "react";
+const LandingPages = lazy(() => import("./components/LandingPages"));
+const Description = lazy(() => import("./components/Description"));
+import { lazy, Suspense } from "react";
 function App() {
   return (
     <div>
