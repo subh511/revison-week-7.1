@@ -1,31 +1,32 @@
-import { BrowserRouter, Routes , Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPages from "./components/LandingPages";
 import Description from "./components/Description";
 function App() {
-
-
   return (
     <div>
     <Appbar/>
-    <BrowserRouter>
-    <Routes>
-    <Route path="/" element={<LandingPages/>}/>
-    <Route path="/description" element={<Description/>}/>
-    </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPages />} />
+          <Route path="/description" element={<Description />} />
+        </Routes>
+      </BrowserRouter>
     </div>
-  )
+  );
 }
 
-function Appbar(){
+function Appbar() {
+  //const navigate = useNavigate();
 
-  const navigate = useNavigate();
-
-  return(
+  return (
     <div>
-    <button onClick={()=> navigate("/")}>Landing-Pages</button>
-    <button onClick={()=> navigate("/description")}>Description-Page</button>
+      <div>
+        <button onClick={() => window.location.href="/"}>Landing-Pages</button>
+        <button onClick={() => window.location.href="/description"}>
+          Description-Page
+        </button>
+      </div>
     </div>
-  )
-} 
-export default App
+  );
+}
+export default App;
