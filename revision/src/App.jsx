@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-const LandingPages = lazy(() => import("./components/LandingPages"));
-const Description = lazy(() => import("./components/Description"));
 import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+const Landing = lazy(() => import("./components/Landing.jsx"));
+const Dashboard = lazy(() => import("./components/Dashboard.jsx"));
+
 function App() {
   return (
     <div>
@@ -12,7 +13,7 @@ function App() {
             path="/"
             element={
               <Suspense fallback={"Loading..."}>
-                <LandingPages />
+                <Landing />
               </Suspense>
             }
           />
@@ -20,7 +21,7 @@ function App() {
             path="/description"
             element={
               <Suspense fallback={"Loading..."}>
-                <Description />
+                <Dashboard />
               </Suspense>
             }
           />
