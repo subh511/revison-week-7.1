@@ -1,14 +1,29 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LandingPages from "./components/LandingPages";
-import Description from "./components/Description";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+const LandingPages  = lazy(()=> "./components/LandingPages");
+const Description = lazy(()=>  "./components/Description");
+import { lazy,Suspense } from "react";
 function App() {
   return (
     <div>
-    <Appbar/>
       <BrowserRouter>
+        <Appbar />
         <Routes>
-          <Route path="/" element={<LandingPages />} />
-          <Route path="/description" element={<Description />} />
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={"Loading..."}>
+                <LandingPages />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/description"
+            element={
+              <Suspense fallback={"Loading..."}>
+                <Description />
+              </Suspense>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>
@@ -16,13 +31,16 @@ function App() {
 }
 
 function Appbar() {
-  //const navigate = useNavigate();
-
+  const navigate = useNavigate();
+  //{navigate("/")}
+  //{navigate("/description")}
+  // window.location.href = "/";
+  //window.location.href = "/description";
   return (
     <div>
       <div>
-        <button onClick={() => window.location.href="/"}>Landing-Pages</button>
-        <button onClick={() => window.location.href="/description"}>
+        <button onClick={() => navigate("/")}>Landing-Pages</button>
+        <button onClick={() => navigate("/description")}>
           Description-Page
         </button>
       </div>
